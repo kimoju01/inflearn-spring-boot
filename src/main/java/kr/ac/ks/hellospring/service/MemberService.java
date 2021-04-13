@@ -32,10 +32,26 @@ public class MemberService {
      * 회원 가입
      */
     public Long join(Member member) {
-        // 같은 이름이 있는 중복 회원은 안 되게!
+
         validateDuplicateMember(member);    //로직이 생기면 따로 분리한다 => ctrl+alt+shift+T 하고 extract method 하면 자동으로 분리해줌
         memberRepository.save(member);
         return member.getId();
+
+//*****   시간 측정 로직(공통 관심 사항)이랑 비즈니스 로직(핵심 관심 사항)이 섞여서 유지보수 불편함.
+//        => 핵심 상황을 분리해야함. AOP가 필요한 상황이다!
+//        long start = System.currentTimeMillis();
+//
+//        try {
+//            // 같은 이름이 있는 중복 회원은 안 되게!
+//            validateDuplicateMember(member);    //로직이 생기면 따로 분리한다 => ctrl+alt+shift+T 하고 extract method 하면 자동으로 분리해줌
+//            memberRepository.save(member);
+//            return member.getId();
+//        } finally {
+//            long finish = System.currentTimeMillis();
+//            long timeMs = finish - start;
+//            System.out.println("join = " + timeMs + "ms");
+//        }
+
 
     }
 
