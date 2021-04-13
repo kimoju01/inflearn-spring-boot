@@ -24,6 +24,7 @@ class MemberServiceIntegrationTest {
     @Autowired MemberRepository memberRepository;
 
     @Test
+    //@Commit : DB에 반영된다
     void 회원가입() {   // Test는 메서드 명을 한글로 해도 상관 X
         //given-when-then 문법: 무언가가 주어졌을 때(given), 이걸 실행했을 때(when), 결과가 이게 나와야해!(then)
         //given
